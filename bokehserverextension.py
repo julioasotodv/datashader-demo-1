@@ -3,4 +3,4 @@ from subprocess import Popen
 
 def load_jupyter_server_extension(nbapp):
     """serve the bokeh-app directory with bokeh server"""
-Popen(["panel", "serve", "main.py", "--allow-websocket-origin=*"])
+Popen(["panel", "serve", "datashader_chart", "--allow-websocket-origin=*"])

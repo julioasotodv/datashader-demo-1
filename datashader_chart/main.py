@@ -1,3 +1,5 @@
+import os
+
 import numpy as np
 import pandas as pd
 import hvplot.pandas
@@ -10,8 +12,11 @@ import datashader
 
 hv.extension("bokeh")
 
+current_dir = os.path.abspath(os.path.join(os.path.abspath(__file__), os.pardir))
+print(current_dir)
+
 # Data:
-datos_airbnb = pd.read_csv("datos_airbnb/listings.csv.bz2", 
+datos_airbnb = pd.read_csv(os.path.join(current_dir, "datos_airbnb", "listings.csv.bz2"), 
                            sep=",", 
                            low_memory=False,
                            usecols=["id", "price", "square_feet", "latitude", "longitude"],
