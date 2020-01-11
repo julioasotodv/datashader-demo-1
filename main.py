@@ -1,4 +1,3 @@
-import panel as pn
 import numpy as np
 import pandas as pd
 import hvplot.pandas
@@ -8,6 +7,8 @@ from matplotlib.cm import YlGnBu_r
 import geoviews as gv
 import cartopy
 import datashader
+
+hv.extension("bokeh")
 
 # Data:
 datos_airbnb = pd.read_csv("datos_airbnb/listings.csv.bz2", 
@@ -38,7 +39,7 @@ datos_airbnb["lat_mercator"] = coordenadas_google_mercator[:,1]
 
 # Charts:
 
-tiles_carto_oscuras = gv.tile_sources.CartoDark.opts(responsive=True)
+tiles_carto_oscuras = gv.tile_sources.CartoDark
 
 scatter_airbnb = datos_airbnb.hvplot(kind="scatter",
                                      x="long_mercator",
@@ -59,12 +60,9 @@ scatter_datashadeado = datashade(scatter_airbnb,
                                  cmap=YlGnBu_r
                                 )
 
-#scatter_datashadeado.opts(responsive=True)
+scatter_datashadeado.opts(responsive=True)
 
-
-pane_one = pn.pane.HoloViews(tiles_carto_oscuras * scatter_datashadeado)
-
-pane_one.servable()
+doc = hv.renderer("bokeh").server_doc(tiles_carto_oscuras * scatter_datashadeado)
 
 curdoc().title = "Ejemplo Datashader 1"
 
