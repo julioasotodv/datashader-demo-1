@@ -38,7 +38,7 @@ datos_airbnb["lat_mercator"] = coordenadas_google_mercator[:,1]
 
 # Charts:
 
-tiles_carto_oscuras = gv.tile_sources.CartoDark
+tiles_carto_oscuras = gv.tile_sources.CartoDark.opts(responsive=True)
 
 scatter_airbnb = datos_airbnb.hvplot(kind="scatter",
                                      x="long_mercator",
@@ -46,8 +46,6 @@ scatter_airbnb = datos_airbnb.hvplot(kind="scatter",
                                      c="precio diario",
                                      size=5,
                                      clabel="$/día",
-                                     width=700,
-                                     height=500,
                                      alpha=0.3,
                                      cmap=YlGnBu_r,
                                      colorbar=True,
@@ -61,8 +59,7 @@ scatter_datashadeado = datashade(scatter_airbnb,
                                  cmap=YlGnBu_r
                                 )
 
-scatter_datashadeado.opts(width=700,
-                          height=500)
+#scatter_datashadeado.opts(responsive=True)
 
 
 pane_one = pn.pane.HoloViews(tiles_carto_oscuras * scatter_datashadeado)
