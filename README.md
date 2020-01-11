@@ -1,6 +1,6 @@
 # Datashader demo 
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/julioasotodv/datashader-demo-1/master?urlpath=/proxy/5006/datashader_chart)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/julioasotodv/datashader-demo-1/master?urlpath=/proxy/5006/main)
 
 A simple datashader demo.
 
