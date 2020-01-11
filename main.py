@@ -12,7 +12,7 @@ import datashader
 
 hv.extension("bokeh")
 
-current_dir = os.path.abspath(os.path.join(os.path.abspath(__file__), os.pardir))
+current_dir = os.path.abspath(os.curdir)
 
 # Data:
 datos_airbnb = pd.read_csv(os.path.join(current_dir, "datos_airbnb", "listings.csv.bz2"), 
