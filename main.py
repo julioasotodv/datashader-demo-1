@@ -14,7 +14,6 @@ hv.extension("bokeh")
 
 current_dir = os.path.abspath(os.path.join(os.path.abspath(__file__), os.pardir))
 
-"""
 # Data:
 datos_airbnb = pd.read_csv(os.path.join(current_dir, "datos_airbnb", "listings.csv.bz2"), 
                            sep=",", 
@@ -68,9 +67,6 @@ scatter_datashadeado = datashade(scatter_airbnb,
 scatter_datashadeado.opts(responsive=True)
 
 doc = hv.renderer("bokeh").server_doc(tiles_carto_oscuras * scatter_datashadeado)
-"""
-
-doc = hv.renderer("bokeh").server_doc(gv.tile_sources.CartoDark)
 
 curdoc().title = "Ejemplo Datashader 1"
 
