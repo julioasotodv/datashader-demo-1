@@ -10,7 +10,7 @@ import cartopy
 import datashader
 
 # Data:
-datos_airbnb = pd.read_csv("datos_airbnb/listings.csv", 
+datos_airbnb = pd.read_csv("datos_airbnb/listings.csv.bz2", 
                            sep=",", 
                            low_memory=False,
                            usecols=["id", "price", "square_feet", "latitude", "longitude"],
