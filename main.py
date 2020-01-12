@@ -22,7 +22,7 @@ datos_airbnb = pd.read_parquet(os.path.join(current_dir, "datos_airbnb", "airbnb
                            engine="fastparquet"
                           )
 
-"""
+
 # Charts:
 
 tiles_carto_oscuras = gv.tile_sources.CartoDark
@@ -49,10 +49,6 @@ scatter_datashadeado = datashade(scatter_airbnb,
 scatter_datashadeado.opts(responsive=True)
 
 doc = hv.renderer("bokeh").server_doc(tiles_carto_oscuras * scatter_datashadeado)
-"""
-from bokeh.models.widgets import Paragraph
-
-curdoc().add_root(Paragraph(text=current_dir + str(existe)))
 
 curdoc().title = "Ejemplo Datashader 1"
 
