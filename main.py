@@ -18,11 +18,10 @@ existe = os.path.exists(os.path.join(current_dir, "datos_airbnb", "listings.csv.
 
 
 # Data:
-datos_airbnb = pd.read_csv(os.path.join(current_dir, "datos_airbnb", "listings.csv.bz2"), 
-                           sep=",",
-                           usecols=["price", "latitude", "longitude"],
-                           compression="bz2"
+datos_airbnb = pd.read_parquet(os.path.join(current_dir, "datos_airbnb", "airbnb_listings.parquet"), 
+                           engine="fastparquet"
                           )
+
 """
 datos_airbnb["precio diario"] = (datos_airbnb["price"]
                                  .str.replace("$", "")
