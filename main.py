@@ -25,7 +25,7 @@ datos_airbnb = pd.read_csv(os.path.join(current_dir, "datos_airbnb", "listings.c
                            compression="bz2",
                            nrows=50
                           )
-"""
+
 datos_airbnb["precio diario"] = (datos_airbnb["price"]
                                  .str.replace("$", "")
                                  .str.replace(",", "")
@@ -71,10 +71,10 @@ scatter_datashadeado = datashade(scatter_airbnb,
 scatter_datashadeado.opts(responsive=True)
 
 doc = hv.renderer("bokeh").server_doc(tiles_carto_oscuras * scatter_datashadeado)
-"""
-from bokeh.models.widgets import Paragraph
 
-curdoc().add_root(Paragraph(text=current_dir + str(existe)))
+#from bokeh.models.widgets import Paragraph
+
+#curdoc().add_root(Paragraph(text=current_dir + str(existe)))
 
 curdoc().title = "Ejemplo Datashader 1"
 
