@@ -23,25 +23,6 @@ datos_airbnb = pd.read_parquet(os.path.join(current_dir, "datos_airbnb", "airbnb
                           )
 
 """
-datos_airbnb["precio diario"] = (datos_airbnb["price"]
-                                 .str.replace("$", "")
-                                 .str.replace(",", "")
-                                 .astype(float)
-                                )
-
-datos_airbnb = datos_airbnb[datos_airbnb["precio diario"] > 0].copy()
-
-coordenadas_google_mercator = (cartopy
-                               .crs
-                               .GOOGLE_MERCATOR                             
-                               .transform_points(src_crs=cartopy.crs.PlateCarree(),
-                                                 x=datos_airbnb["longitude"].values,
-                                                 y=datos_airbnb["latitude"].values)
-                              )
-
-datos_airbnb["long_mercator"] = coordenadas_google_mercator[:,0]
-datos_airbnb["lat_mercator"] = coordenadas_google_mercator[:,1]
-
 # Charts:
 
 tiles_carto_oscuras = gv.tile_sources.CartoDark
