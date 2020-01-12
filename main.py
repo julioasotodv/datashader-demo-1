@@ -16,15 +16,16 @@ current_dir = os.path.abspath(os.curdir)
 
 existe = os.path.exists(os.path.join(current_dir, "datos_airbnb", "listings.csv.bz2"))
 
-"""
+
 # Data:
 datos_airbnb = pd.read_csv(os.path.join(current_dir, "datos_airbnb", "listings.csv.bz2"), 
                            sep=",", 
                            low_memory=False,
                            usecols=["id", "price", "square_feet", "latitude", "longitude"],
-                           compression="bz2"
+                           compression="bz2",
+                           nrow=50
                           )
-
+"""
 datos_airbnb["precio diario"] = (datos_airbnb["price"]
                                  .str.replace("$", "")
                                  .str.replace(",", "")
