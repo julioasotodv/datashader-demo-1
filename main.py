@@ -3,25 +3,20 @@ import os
 import numpy as np
 import pandas as pd
 import holoviews as hv
-import hvplot.dask
+import hvplot.pandas
 from bokeh.io import curdoc
 from matplotlib.cm import YlGnBu_r
 import geoviews as gv
 import cartopy
 import datashader
-import dask.multiprocessing
-import dask.dataframe as dd
+from holoviews.operation.datashader import rasterize, shade, datashade
 
-dask.config.set(scheduler='processes')
+
 hv.extension("bokeh")
-
-current_dir = os.path.abspath(os.curdir)
-
-existe = os.path.exists(os.path.join(current_dir, "datos_airbnb", "listings.csv.bz2"))
 
 
 # Data:
-datos_airbnb = dd.read_parquet(os.path.join(current_dir, "datos_airbnb", "airbnb_listings.parquet"), 
+datos_airbnb = pd.read_parquet(os.path.join("datos_airbnb", "airbnb_listings.parquet"), 
                            engine="fastparquet"
                           )
 
@@ -41,8 +36,6 @@ scatter_airbnb = datos_airbnb.hvplot(kind="scatter",
                                      colorbar=True,
                                      logz=True
                                     )
-
-from holoviews.operation.datashader import rasterize, shade, datashade
 
 scatter_datashadeado = datashade(scatter_airbnb, 
                                  aggregator=datashader.reductions.mean("precio diario"),
