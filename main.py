@@ -21,8 +21,7 @@ existe = os.path.exists(os.path.join(current_dir, "datos_airbnb", "listings.csv.
 datos_airbnb = pd.read_csv(os.path.join(current_dir, "datos_airbnb", "listings.csv.bz2"), 
                            sep=",",
                            usecols=["id", "price", "square_feet", "latitude", "longitude"],
-                           compression="bz2",
-                           nrows=50
+                           compression="bz2"
                           )
 
 datos_airbnb["precio diario"] = (datos_airbnb["price"]
