@@ -23,7 +23,7 @@ datos_airbnb = pd.read_csv(os.path.join(current_dir, "datos_airbnb", "listings.c
                            low_memory=False,
                            usecols=["id", "price", "square_feet", "latitude", "longitude"],
                            compression="bz2",
-                           nrow=50
+                           nrows=50
                           )
 """
 datos_airbnb["precio diario"] = (datos_airbnb["price"]
