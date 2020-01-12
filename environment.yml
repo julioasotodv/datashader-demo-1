@@ -5,6 +5,8 @@ dependencies:
   - matplotlib
   - pandas
   - fastparquet
+  - dask
+  - distributed
   - bokeh 
   - holoviews 
   - hvplot 
