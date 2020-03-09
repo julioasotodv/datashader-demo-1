@@ -1,13 +1,14 @@
 channels:
+  - bokeh
   - conda-forge
 dependencies:
-  - python=3.7
+  - python
   - matplotlib
   - pandas
   - fastparquet
   - dask
   - distributed
-  - bokeh 
+  - bokeh>=2.0.0
   - holoviews 
   - hvplot 
   - geoviews 
