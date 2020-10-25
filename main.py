@@ -42,9 +42,17 @@ scatter_datashadeado = datashade(scatter_airbnb,
                                  cmap=YlGnBu_r
                                 )
 
-scatter_datashadeado.opts(responsive=True)
+plot_final = tiles_carto_oscuras * scatter_datashadeado
+plot_final.opts(responsive=True)
 
-doc = hv.renderer("bokeh").server_doc(tiles_carto_oscuras * scatter_datashadeado)
+# Convertir en figura de Bokeh:
+bokeh_renderer = hv.renderer("bokeh").instance(mode='server')
+plot_final_bokeh = bokeh_renderer.get_plot(plot_final).state
+
+# Hacer la figura de bokeh de tamaño responsive:
+plot_final_bokeh.sizing_mode="stretch_both"
+
+# Añadir la figura de Bokeh al documento de Bokeh Server:
+curdoc().add_root(plot_final_bokeh)
 
 curdoc().title = "Ejemplo Datashader 1"
-
